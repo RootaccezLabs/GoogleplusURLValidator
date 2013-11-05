@@ -26,18 +26,18 @@ class GoogleplusURLValidator{
 	 */
 	public function is_valid(){
 		
-		if($this->is_url($this->url)){
+	       if($this->is_url($this->url)){
 		
 		$this->pattern = '/plus.google.com/i';
 		
 		preg_match($this->pattern, $this->url, $this->result);
 		
-		if(count($this->result)!=0){
-		 return true;	
-		}
-		else{
-		 return false;
-		}
+			if(count($this->result)!=0){
+			 return true;	
+			}
+			else{
+			 return false;
+			}
 		
 	
 		}
@@ -47,7 +47,18 @@ class GoogleplusURLValidator{
 		
 	}
 	
+	/*
+	 *@method: get_profile_id
+	 */	
+	public function get_profile_id(){
 		
+		$this->pattern = '/\+\w+|\d{21}/i';
+		
+		preg_match($this->pattern, $this->url, $this->result);
+		
+		
+		return $this->result[0];
+	}
 	
 	/* is_url is used to validat the url
 	 * @method: is_url
