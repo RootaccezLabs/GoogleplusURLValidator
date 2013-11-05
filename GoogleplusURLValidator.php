@@ -1,6 +1,6 @@
 <?php 
 /*
- * GoogleplusURLValidator class is used to validate the Google + profile url.
+* GoogleplusURLValidator class is used to validate the Google + profile url.
 *
 * @package: GoogleplusURLValidator
 * @author: Gowri sankar <gchokeen@gmail.com>
@@ -20,10 +20,34 @@ class GoogleplusURLValidator{
 		$this->result = '';
 	}
 	
+	/*
+	 *@method:is_valid
+	 *
+	 */
+	public function is_valid(){
+		
+		if($this->is_url($this->url)){
+		
+		$this->pattern = '/plus.google.com/i';
+		
+		preg_match($this->pattern, $this->url, $this->result);
+		
+		if(count($this->result)!=0){
+		 return true;	
+		}
+		else{
+		 return false;
+		}
+		
 	
-	public function validate(){
+		}
+		else{
+		   throw Exception("This is not a valid URL!");
+		}
 		
 	}
+	
+		
 	
 	/* is_url is used to validat the url
 	 * @method: is_url
@@ -38,6 +62,7 @@ class GoogleplusURLValidator{
 			return true;
 		}
 	}
+	
 
 	
 }
